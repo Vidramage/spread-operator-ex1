@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The ...Spread Operator</title>
+  <style>
+    body {
+      min-height: 100vh;
+      font-family: sans-serif;
+      background: #ffc600;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      color:white;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    }
+    .jump span {
+      position: relative;
+      display: inline-block;
+      transition: transform 0.1s;
+      cursor:url('http://csscursor.info/source/santahand.png'), default;
+    }
+    .jump span:hover {
+      transform:translateY(-20px) scale(2) rotate(10deg);
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <h2 class="jump">SPREADS!</h2>
+
+<script>
+  //set the literal value of the html attached to the jump class equal in memory to the variable 'a' as a const. (i.e. selecting the query of the entire html "node" attached to jump class)
+  const a = document.querySelector('.jump');
+  //sets the individual HTML elements inside jump class as a result of the output of newFunc execution
+  a.innerHTML = newFunc(a.textContent);
+  //'functor' which takes in a word argument. Acts as a wrapper for the html to be generated. The output of the literal string values that are being spread into the array and joined on each returned output with an empty value in order to concatonate the spaces between the html tags and parse it into the Document Object Model as a result of the innerHTML method called on 'a'.
+  function newFunc(word) {
+    return [...word].map(letter => `<span>${letter}</span>`).join('');
+  }
+
+</script>
+</body>
+</html>
